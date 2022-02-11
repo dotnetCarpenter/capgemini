@@ -1,0 +1,65 @@
+{
+  "objekter": [
+    {
+      "id": 489331915,
+      "href": "https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103/489331915/2",
+      "metadata": {
+        "type": {
+          "id": 103,
+          "navn": "Fartsdemper"
+        },
+        "versjon": 2,
+        "startdato": "2016-03-17",
+        "sist_modifisert": "2018-05-30T14:57:31"
+      }
+    },
+    {
+      "id": 489331916,
+      "href": "https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103/489331916/1",
+      "metadata": {
+        "type": {
+          "id": 103,
+          "navn": "Fartsdemper"
+        },
+        "versjon": 1,
+        "startdato": "2014-03-29",
+        "sist_modifisert": "2018-05-30T14:57:31"
+      }
+    },
+    {
+      "id": 489331917,
+      "href": "https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103/489331917/1",
+      "metadata": {
+        "type": {
+          "id": 103,
+          "navn": "Fartsdemper"
+        },
+        "versjon": 1,
+        "startdato": "2014-03-29",
+        "sist_modifisert": "2018-05-30T14:57:31"
+      }
+    },
+    {
+      "id": 489331933,
+      "href": "https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103/489331933/1",
+      "metadata": {
+        "type": {
+          "id": 103,
+          "navn": "Fartsdemper"
+        },
+        "versjon": 1,
+        "startdato": "2014-03-29",
+        "sist_modifisert": "2018-01-01T01:11:53"
+      }
+    }
+  ],
+  "metadata": {
+    "antall": 4,
+    "returnert": 4,
+    "sidestørrelse": 800,
+    "neste": {
+      "start": "y24ZxsYwSnFtMRE5xh2YtZAiueVFCaFkvsjeJ3YMBPKp4Zw5phVZn4CWSFZLtA5f8cwDDMUNA7wZtDaY8cwYstuJtnUKjNK4R2",
+      "href": "https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kommune=5001&segmentering=true&kartutsnitt=270153.519%2C7040213.023%2C270332.114%2C7040444.864&start=y24ZxsYwSnFtMRE5xh2YtZAiueVFCaFkvsjeJ3YMBPKp4Zw5phVZn4CWSFZLtA5f8cwDDMUNA7wZtDaY8cwYstuJtnUKjNK4R2&inkluder=metadata"
+    }
+  }
+}
