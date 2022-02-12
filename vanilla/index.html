@@ -19,7 +19,6 @@
         <h1 class="text-3xl font-bold text-white grow text-right">Oversikt over Fartsdempere</h1>
       </header>
 
-      <div id="test"></div>
       <script id="rowTmpl" type="text/x-dot-template">
         {{~ it :f }}
           <tr title="Sist modifisert {{=f.lastModified || 'er ikke spesifisert'}}">
@@ -31,6 +30,11 @@
             <td><a href="{{=f.href}}" target:"_blank">🗺️</a></td>
           </tr>
         {{~}}
+      </script>
+      <script id="errorTmpl" type="text/x-dot-template">
+        <tr>
+          <td colspan="6" class="text-svv-red text-xl font-bold">{{=it.message}}</td>
+        </tr>
       </script>
 
       <table>
@@ -53,6 +57,6 @@
       <h1>Mine fartsdempere</h1>
     </section>
 
-    <script type="module" src="/js/main.mjs"></script>
+    <script type="module" src="/js/main.js"></script>
   </body>
 </html>

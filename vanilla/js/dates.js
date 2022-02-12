@@ -2,13 +2,13 @@ const formatNorwegianDateWithTime = new Intl.DateTimeFormat ('no-NO', { dateStyl
 const formatNorwegianDate = new Intl.DateTimeFormat ('no-NO', { dateStyle: 'short' }).format
 
 const safeFormatDate = formatter => dateString => {
-	if (dateString == null) return null
+  if (dateString == null) return null
 
-	return formatter (new Date (dateString))
+  return formatter (new Date (dateString))
 }
 
 export {
-	formatNorwegianDateWithTime,
-	formatNorwegianDate,
-	safeFormatDate
+  formatNorwegianDateWithTime,
+  formatNorwegianDate,
+  safeFormatDate
 }
