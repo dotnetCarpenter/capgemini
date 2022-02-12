@@ -1,6 +1,7 @@
-const colors = require('tailwindcss/colors')
+const withAnimations = require('animated-tailwindcss')
+const colors         = require('tailwindcss/colors')
 
-module.exports = {
+module.exports = withAnimations ({
   content: [
     // "./index.html",
     "./*.html",
@@ -23,4 +24,4 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
   ],
-}
+})

@@ -8,13 +8,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "animated-tailwindcss": "^3.2.4",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.22",
     "vite": "^2.8.0"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
-    "animate.css": "^4.1.1",
     "dot": "^1.1.3"
   }
 }

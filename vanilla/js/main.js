@@ -1,4 +1,3 @@
-import 'animate.css'
 import '../style.css'
 
 import doT      from 'dot'
@@ -20,8 +19,8 @@ const setHeader = () => {
 }
 
 //#region region ANIMATION **************
-const animateOutClass = 'animate__backOutUp'
-const animateInClass  = 'animate__backInDown'
+const animateOutClass = 'animate-backOutUp'
+const animateInClass  = 'animate-backInDown'
 
 const isAnimatingOut = element => element.classList.contains (animateOutClass)
 
@@ -29,10 +28,10 @@ const setAnimationHandler = element => {
   element.addEventListener ('animationend', () => {
 
     if (isAnimatingOut (element)) {
-      element.classList.remove ('animate__animated', animateOutClass)
+      element.classList.remove ('animate-animated', animateOutClass)
       element.classList.add    ('invisible', 'pointer-events-none')
     } else {
-      element.classList.remove ('animate__animated', animateInClass, 'pointer-events-none')
+      element.classList.remove ('animate-animated', animateInClass, 'pointer-events-none')
     }
 
   })
@@ -61,9 +60,9 @@ const router = event => {
   page.main ()
 
   if (previousPage) {
-    previousPage.mountElement.classList.add  ('animate__animated', animateOutClass)
+    previousPage.mountElement.classList.add  ('animate-animated', animateOutClass)
   }
-  page.mountElement.classList.add    ('animate__animated', animateInClass)
+  page.mountElement.classList.add    ('animate-animated', animateInClass)
   page.mountElement.classList.remove ('invisible')
 }
 
