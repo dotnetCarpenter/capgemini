@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
+    "animate.css": "^4.1.1",
     "dot": "^1.1.3"
   }
 }

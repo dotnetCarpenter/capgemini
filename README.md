@@ -10,6 +10,8 @@
 + 17:25-17:40: Documented [Endpoint API](#endpoint-api)
 + 17:45-18:35: HTML form
 + 19:10-19:40: Sort speed bumps by date
++ 19:40-20:30: Added basic router
+
 
 ## Endpoint API
 

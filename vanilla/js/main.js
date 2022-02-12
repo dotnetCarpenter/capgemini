@@ -1,78 +1,40 @@
+import 'animate.css'
 import '../style.css'
-import doT from 'dot'
-import {
-  formatNorwegianDateWithTime,
-  formatNorwegianDate,
-  safeFormatDate,
-  createDate
-} from './dates.js'
 
-const compose = f => g => x => f (g (x))
-const pipe = (...fs) => x => fs.reduce ((x, f) => f (x), x)
-const map = f => list => list.map (f)
+import overview from './pages/overview.js'
 
-const formatDate = safeFormatDate (formatNorwegianDate)
-const formatDateTime = safeFormatDate (formatNorwegianDateWithTime)
-
-const tmpl = document.querySelector ('#rowTmpl').textContent
-const renderFunction = doT.template (tmpl)
-const rowInsertionPoint = document.querySelector ('#rows')
-
-const endpoint = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
-
-fetch (endpoint, {headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
-  .then (response => {
-    if (!response.ok) {
-      throw new Error (`HTTP error! status: ${response.status}`)
-    }
-    return response.json ()
-  })
-  .then (pipe (tranform, sort (sortSpeedBumps), map (formatDates), renderSpeedBumps))
-  .catch (renderError)
-
-
-function tranform (responseData) {
-  return responseData?.objekter?.map (item => ({
-    status: 'Registrert',
-    id: item.id,
-    href: item?.href,
-    name: item?.metadata?.type?.navn,
-    version: item?.metadata?.versjon,
-    startDate: createDate (item?.metadata?.startdato),
-    lastModified: createDate (item?.metadata?.sist_modifisert),
-  }))
+const register = {
+  main () {console.debug ('page register')},
+  mountElement: document.querySelector ('#page-register')
+}
+const pageNotFound = {
+  main () {console.error ('404: page not found')},
+  mountElement: document.querySelector ('#page-not-found')
 }
 
-function sort (comparer) {
-  return list => list.sort (comparer)
+const routes = {
+  ''         : overview,
+  '#overview': overview,
+  '#register': register,
+  '#404'     : pageNotFound,
 }
+let previousPage
+const router = event => {
+  const page = routes[window.location.hash]
 
-function sortSpeedBumps (x1, x2) {
-  return x1.startDate < x2.startDate
-    ? -1
-    : x1.startDate > x2.startDate
-      ? 1
-      : 0
-}
-
-function formatDates (speedBump) {
-  return {
-    ...speedBump,
-    startDate: formatDate (speedBump.startDate),
-    lastModified: formatDateTime (speedBump.lastModified),
-  }
-}
-
-function renderSpeedBumps (speedBumps) {
-  if (speedBumps) {
-    rowInsertionPoint.innerHTML = renderFunction (speedBumps)
+  if (page) {
+    page.mountElement.classList.remove ('invisible')
+    page.main ()
   } else {
-    renderError (new Error ('Fant ingen fartsdempere'))
+    routes['#404'].main ()
   }
+
+  if (previousPage) {
+    previousPage.mountElement.classList.add ('invisible')
+  }
+
+  previousPage = page
 }
 
-function renderError (error) {
-  const errorTmpl = document.querySelector ('#errorTmpl').textContent
-
-  rowInsertionPoint.innerHTML = doT.template (errorTmpl) (error)
-}
+window.addEventListener("hashchange", router, false)
+router ()
