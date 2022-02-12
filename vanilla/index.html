@@ -21,12 +21,12 @@
 
       <div id="test"></div>
       <script id="rowTmpl" type="text/x-dot-template">
-        {{~ it.objekter :f }}
-          <tr>
+        {{~ it :f }}
+          <tr title="Sist modifisert {{=f.lastModified || 'er ikke spesifisert'}}">
             <td>{{=f.id}}</td>
-            <td>{{=f.versjon}}</td>
-            <td>{{=f.navn}}</td>
-            <td>{{=f.startdato}}</td>
+            <td>{{=f.version}}</td>
+            <td>{{=f.name}}</td>
+            <td>{{=f.startDate || 'ikke spesifisert'}}</td>
             <td>{{=f.status}}</td>
             <td><a href="{{=f.href}}" target:"_blank">🗺️</a></td>
           </tr>
