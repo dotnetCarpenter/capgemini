@@ -13,13 +13,13 @@ const map = f => list => list.map (f)
 const formatDate = safeFormatDate (formatNorwegianDate)
 const formatDateTime = safeFormatDate (formatNorwegianDateWithTime)
 
-const tmpl = document.querySelector ('#rowTmpl').textContent
+const tmpl = document.getElementById ('rowTmpl').textContent
 const renderFunction = doT.template (tmpl)
-const rowInsertionPoint = document.querySelector ('#rows')
+const rowInsertionPoint = document.getElementById ('rows')
 
 const endpoint = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
 
-const mountElement = document.querySelector ('#page-overview')
+const mountElement = document.getElementById ('page-overview')
 
 const main = () => {
   fetch (endpoint, {headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
@@ -75,7 +75,7 @@ function renderSpeedBumps (speedBumps) {
 }
 
 function renderError (error) {
-  const errorTmpl = document.querySelector ('#errorTmpl').textContent
+  const errorTmpl = document.getElementById ('errorTmpl').textContent
 
   rowInsertionPoint.innerHTML = doT.template (errorTmpl) (error)
 }

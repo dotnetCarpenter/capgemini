@@ -11,6 +11,7 @@
 + 17:45-18:35: HTML form
 + 19:10-19:40: Sort speed bumps by date
 + 19:40-20:30: Added basic router
++ 21:00-21:15: Use [doT] to add `<header>`
 
 
 ## Endpoint API
@@ -62,6 +63,10 @@ If we follow the link to the next page, we will get an empty result set:
 ```
 
 See `get_data.sh` for a quick comparison of request and result.
+
+## doT
+
+[doT]'s documentation is very scarce. The best examples I have found is https://github.com/olado/doT/blob/master/examples/advancedsnippet.txt.
 
 [doT]: https://github.com/olado/doT
 [API]: https://nvdbapiles-v3.atlas.vegvesen.no/dokumentasjon/
