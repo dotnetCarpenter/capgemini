@@ -12,6 +12,7 @@
 + 19:10-19:40: Sort speed bumps by date
 + 19:40-20:30: Added basic router
 + 21:00-21:15: Use [doT] to add `<header>`
++ 21:15-22:30: Added page animation
 
 
 ## Endpoint API

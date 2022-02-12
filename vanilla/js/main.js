@@ -13,9 +13,31 @@ const pageNotFound = {
   mountElement: document.getElementById ('page-not-found')
 }
 
-const header = doT.template (document.getElementById ('headerTmpl').textContent)
-document.querySelectorAll ('.header')
-  .forEach (headerElement => { headerElement.innerHTML = header () })
+const setHeader = () => {
+  const render = doT.template (document.getElementById ('headerTmpl').textContent)
+  document.querySelectorAll ('.header')
+    .forEach (headerElement => { headerElement.innerHTML = render () })
+}
+
+//#region region ANIMATION **************
+const animateOutClass = 'animate__backOutUp'
+const animateInClass  = 'animate__backInDown'
+
+const isAnimatingOut = element => element.classList.contains (animateOutClass)
+
+const setAnimationHandler = element => {
+  element.addEventListener ('animationend', () => {
+
+    if (isAnimatingOut (element)) {
+      element.classList.remove ('animate__animated', animateOutClass)
+      element.classList.add    ('invisible', 'pointer-events-none')
+    } else {
+      element.classList.remove ('animate__animated', animateInClass, 'pointer-events-none')
+    }
+
+  })
+}
+//#endregion END ANIMATION **************
 
 const routes = {
   ''         : overview,
@@ -23,23 +45,30 @@ const routes = {
   '#register': register,
   '#404'     : pageNotFound,
 }
-let previousPage
-const router = event => {
-  const page = routes[window.location.hash]
 
-  if (page) {
-    page.mountElement.classList.remove ('invisible', 'pointer-events-none')
-    page.main ()
-  } else {
-    routes['#404'].main ()
-  }
+const getRoute = hash => (
+  routes [hash] || routes ['#404']
+)
+
+const router = event => {
+  const route        = new URL (event.newURL)
+  const previousPage = event.oldURL && getRoute (new URL (event.oldURL).hash)
+  const page         = getRoute (route.hash)
+
+  // abort if the next page is the same as the previous
+  if (previousPage === page) return
+
+  page.main ()
 
   if (previousPage) {
-    previousPage.mountElement.classList.add ('invisible', 'pointer-events-none')
+    previousPage.mountElement.classList.add  ('animate__animated', animateOutClass)
   }
-
-  previousPage = page
+  page.mountElement.classList.add    ('animate__animated', animateInClass)
+  page.mountElement.classList.remove ('invisible')
 }
 
 window.addEventListener("hashchange", router, false)
-router ()
+
+setHeader () // set head with navigation on all pages
+document.querySelectorAll ('.page').forEach (setAnimationHandler) // set animationend cleanup on all pages
+router ({newURL: window.location}) // animate to first page
