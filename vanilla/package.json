@@ -13,6 +13,7 @@
     "vite": "^2.8.0"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.4.0"
+    "@tailwindcss/forms": "^0.4.0",
+    "dot": "^1.1.3"
   }
 }
