@@ -22,12 +22,16 @@
       <script id="rowTmpl" type="text/x-dot-template">
         {{~ it :f }}
           <tr title="Sist modifisert {{=f.lastModified || 'er ikke spesifisert'}}">
-            <td>{{=f.id}}</td>
-            <td>{{=f.version}}</td>
-            <td>{{=f.name}}</td>
-            <td>{{=f.startDate || 'ikke spesifisert'}}</td>
+            <td>{{=f.id || '-'}}</td>
+            <td>{{=f.version || '-'}}</td>
+            <td>{{=f.name || '-'}}</td>
+            <td>{{=f.startDate || '-'}}</td>
             <td>{{=f.status}}</td>
-            <td><a href="{{=f.href}}" target:"_blank">🗺️</a></td>
+            <td>
+              {{? f.href }}
+                <a href="{{=f.href}}" target:"_blank">🗺️</a>
+              {{?}}
+            </td>
           </tr>
         {{~}}
       </script>
@@ -53,7 +57,7 @@
 
     </section>
 
-    <section class="page absolute h-screen w-screen invisible">
+    <section class="page absolute h-screen w-screen overflow-auto invisible">
       <h1>Mine fartsdempere</h1>
     </section>
 
