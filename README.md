@@ -8,7 +8,8 @@
 + 15:15-16:00: Fetch data from endpoint and tranform the data
 + 16:15-16:45: Found and read documentation and added error handling
 + 17:25-17:40: Documented [Endpoint API](#endpoint-api)
-+ 17:45-18:30: HTML form
++ 17:45-18:35: HTML form
++ 19:10-19:40: Sort speed bumps by date
 
 ## Endpoint API
 

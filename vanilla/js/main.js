@@ -3,12 +3,17 @@ import doT from 'dot'
 import {
   formatNorwegianDateWithTime,
   formatNorwegianDate,
-  safeFormatDate
+  safeFormatDate,
+  createDate
 } from './dates.js'
 
 const compose = f => g => x => f (g (x))
+const pipe = (...fs) => x => fs.reduce ((x, f) => f (x), x)
+const map = f => list => list.map (f)
+
 const formatDate = safeFormatDate (formatNorwegianDate)
 const formatDateTime = safeFormatDate (formatNorwegianDateWithTime)
+
 const tmpl = document.querySelector ('#rowTmpl').textContent
 const renderFunction = doT.template (tmpl)
 const rowInsertionPoint = document.querySelector ('#rows')
@@ -22,10 +27,9 @@ fetch (endpoint, {headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+jso
     }
     return response.json ()
   })
-  .then (compose (renderSpeedBumps)
-                 (tranform))
+  .then (pipe (tranform, sort (sortSpeedBumps), map (formatDates), renderSpeedBumps))
   .catch (renderError)
-// TODO: Sorter etter startDato
+
 
 function tranform (responseData) {
   return responseData?.objekter?.map (item => ({
@@ -34,9 +38,29 @@ function tranform (responseData) {
     href: item?.href,
     name: item?.metadata?.type?.navn,
     version: item?.metadata?.versjon,
-    startDate: formatDate (item?.metadata?.startdato),
-    lastModified: formatDateTime (item?.metadata?.sist_modifisert),
+    startDate: createDate (item?.metadata?.startdato),
+    lastModified: createDate (item?.metadata?.sist_modifisert),
   }))
+}
+
+function sort (comparer) {
+  return list => list.sort (comparer)
+}
+
+function sortSpeedBumps (x1, x2) {
+  return x1.startDate < x2.startDate
+    ? -1
+    : x1.startDate > x2.startDate
+      ? 1
+      : 0
+}
+
+function formatDates (speedBump) {
+  return {
+    ...speedBump,
+    startDate: formatDate (speedBump.startDate),
+    lastModified: formatDateTime (speedBump.lastModified),
+  }
 }
 
 function renderSpeedBumps (speedBumps) {
