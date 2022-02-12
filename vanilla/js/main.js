@@ -25,7 +25,7 @@ fetch (endpoint, {headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+jso
   .then (compose (renderSpeedBumps)
                  (tranform))
   .catch (renderError)
-
+// TODO: Sorter etter startDato
 
 function tranform (responseData) {
   return responseData?.objekter?.map (item => ({

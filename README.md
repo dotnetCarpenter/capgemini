@@ -7,7 +7,8 @@
 + 14:20-14:50: Setup [doT] with test data
 + 15:15-16:00: Fetch data from endpoint and tranform the data
 + 16:15-16:45: Found and read documentation and added error handling
-+ 17:25-17:35: Documented [Endpoint API](#endpoint-api)
++ 17:25-17:40: Documented [Endpoint API](#endpoint-api)
++ 17:45-18:30: HTML form
 
 ## Endpoint API
 
@@ -15,7 +16,7 @@ Dokumentasjon: https://nvdbapiles-v3.atlas.vegvesen.no/dokumentasjon/
 
 Eksempel klient: https://github.com/nvdb-vegdata/nvdb-api-client
 
-When using the provided URL
+When using the provided URI
 `https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata`
 , we get back 4 speed bump objects.
 The [API] supports pagination with the query parameter `antall` but it
