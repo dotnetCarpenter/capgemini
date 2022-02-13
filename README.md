@@ -25,6 +25,7 @@ Time spent:
 
 + 13:15-14:20: Design overview page according to wireframe + added correct fonts
 + 14:45-15:45: Design header according to wireframe
++ 17:00-:Design footer according to wireframe
 </details>
 
 ## Endpoint API

@@ -3,8 +3,8 @@ const colors         = require('tailwindcss/colors')
 
 module.exports = withAnimations ({
   content: [
-    // "./index.html",
-    "./*.html",
+    "./index.html",
+    // "./*.html",
     "./js/**/*.{html,js,mjs}",
   ],
   theme: {
