@@ -7,14 +7,14 @@
     <title>Capgemini - Get The Future You Want</title>
   </head>
   <body class="antialiased relative">
-    <section id="page-overview" class="page h-screen hidden pointer-events-none">
+    <section id="page-overview" class="page h-screen hidden-force pointer-events-none overflow-auto">
 
       <header class="header bg-svv-grey flex items-center flex-row mb-3 leading-8"></header>
 
       <article class="md:p-2">
         <h1 class="text-3xl font-bold text-svv-grey mb-3 pl-1">Mine fartsdempere</h1>
 
-        <p class="text mb-3 md:w-1/2 px-1">
+        <p class="max-w-x-screen mb-3 md:w-1/2 px-1">
           Mine fartsdempere er en oversikt over alle fartsdemperene som har blitt
           sendt inn. Her kan du raskt se statusen på registreringen, og se de i
           vegkart.
@@ -34,6 +34,8 @@
           <tbody id="rows" class="bg-white"></tbody>
         </table>
       </article>
+
+      <footer class="footer bg-slate-100 h-48 grid grid-rows-3 pl-1"></footer>
 
       <script id="rowTmpl" type="text/x-dot-template">
         {{~ it :f }}
@@ -58,17 +60,17 @@
       </script>
     </section>
 
-    <section id="page-register" class="page h-screen hidden pointer-events-none overflow-x-hidden">
+    <section id="page-register" class="page h-screen hidden-force pointer-events-none overflow-auto">
       <header class="header bg-svv-grey flex items-center flex-row mb-3 leading-8"></header>
 
       <article>
         <h1 class="text-3xl font-bold text-svv-grey mb-3 pl-1">Registrer ny fartsdemper</h1>
 
-        <p class="text mb-3 md:w-1/2 px-1">
+        <p class="max-w-x-screen mb-3 md:w-1/2 px-1">
           Her kan du registrere din nye fartsdemper med å legge til metadata og lokasjon.
         </p>
 
-        <form class="mt-8 max-w-md" action="#">
+        <form class="mt-8 max-w-md pl-1" action="#">
           <div class="grid grid-cols-1 gap-6">
             <label class="block">
               <span class="text-gray-700">Navn</span>
@@ -149,13 +151,16 @@
           </div>
         </form>
       </article>
+
+      <footer class="footer bg-slate-100 h-48 grid grid-rows-3 pl-1"></footer>
     </section>
 
-    <section id="page-not-found" class="page h-screen hidden pointer-events-none">
+    <section id="page-not-found" class="page h-screen hidden-force pointer-events-none overflow-auto">
       <header class="header bg-svv-grey flex items-center flex-row mb-3 leading-8"></header>
 
       <h1 class="text-3xl font-bold text-svv-red mb-3 pl-1">404: Page Not Found</h1>
     </section>
+
 
     <script id="headerTmpl" type="text/x-dot-template">
       <svg class="logo h-12 md:h-24" viewBox="0 0 65.261502 46.463198" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -170,7 +175,18 @@
         </ol>
       </nav>
 
-      <button class="button">Logg ut</button>
+      <button class="button mr-1 md:mr-4">Logg ut</button>
+    </script>
+
+    <script id="footerTmpl" type="text/x-dot-template">
+      <section class="max-w-md row-start-3">
+        <h3 class="text text-base font-semibold tracking-wider">Drevet av ferske vegdata fra Nasjonal vegdatabank</h3>
+        <ol class="text-sm flex items-end">
+          <li class="flex-grow">Statens vegvesen</li>
+          <li class="flex-grow">Vegkart</li>
+          <li class="flex-grow">Kartverket</li>
+        </ol>
+      </section>
     </script>
 
     <script type="module" src="/js/main.js"></script>

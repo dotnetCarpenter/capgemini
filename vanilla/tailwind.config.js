@@ -1,5 +1,4 @@
 const withAnimations = require('animated-tailwindcss')
-const colors         = require('tailwindcss/colors')
 
 module.exports = withAnimations ({
   content: [
@@ -8,17 +7,19 @@ module.exports = withAnimations ({
     "./js/**/*.{html,js,mjs}",
   ],
   theme: {
-    colors: {
-      ...colors,
-      'svv-grey': 'hsl(201, 11%, 30%)',
-      'svv-yellow': 'rgb(255, 214, 31)',
-      'svv-red': 'hsl(355, 85%, 52%)'
-    },
     extend: {
+      maxWidth: {
+        'x-screen': '100vw'
+      },
       strokeWidth: {
         '1': '0.2px',
         '2': '0.4px',
-      }
+      },
+      colors: {
+        'svv-grey': 'hsl(201, 11%, 30%)',
+        'svv-yellow': 'rgb(255, 214, 31)',
+        'svv-red': 'hsl(355, 85%, 52%)'
+      },
     },
   },
   plugins: [

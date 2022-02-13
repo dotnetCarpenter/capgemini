@@ -12,11 +12,17 @@ const pageNotFound = {
   mountElement: document.getElementById ('page-not-found')
 }
 
-const setHeader = () => {
-  const render = doT.template (document.getElementById ('headerTmpl').textContent)
-  document.querySelectorAll ('.header')
-    .forEach (headerElement => { headerElement.innerHTML = render () })
+const setInnerHtml = f => elements => {
+  elements.forEach (headerElement => { headerElement.innerHTML = f () })
 }
+
+const setHeaderAndFooter = () => {
+  setInnerHtml (doT.template (document.getElementById ('headerTmpl').textContent))
+               (document.querySelectorAll ('.header'))
+
+  setInnerHtml (doT.template (document.getElementById ('footerTmpl').textContent))
+               (document.querySelectorAll ('.footer'))
+  }
 
 //#region region ANIMATION **************
 const animateOutClass = 'animate-backOutUp'
@@ -29,7 +35,7 @@ const setAnimationHandler = element => {
 
     if (isAnimatingOut (element)) {
       element.classList.remove ('animate-animated', animateOutClass)
-      element.classList.add    ('hidden', 'pointer-events-none')
+      element.classList.add    ('hidden-force', 'pointer-events-none')
     } else {
       element.classList.remove ('animate-animated', animateInClass, 'pointer-events-none')
     }
@@ -63,11 +69,11 @@ const router = event => {
     previousPage.mountElement.classList.add  ('animate-animated', animateOutClass)
   }
   page.mountElement.classList.add    ('animate-animated', animateInClass)
-  page.mountElement.classList.remove ('hidden')
+  page.mountElement.classList.remove ('hidden-force')
 }
 
 window.addEventListener("hashchange", router, false)
 
-setHeader () // set head with navigation on all pages
+setHeaderAndFooter () // set head with navigation on all pages
 document.querySelectorAll ('.page').forEach (setAnimationHandler) // set animationend cleanup on all pages
 router ({newURL: window.location}) // animate to first page
