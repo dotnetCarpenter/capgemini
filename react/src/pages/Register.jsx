@@ -4,7 +4,7 @@ function Register () {
 		//  hidden-force
 		<section id="page-register" className="page h-screen pointer-events-none overflow-auto">
 
-			<article class="md:p-2">
+			<article className="md:p-2">
 				<h1 className="text-3xl font-bold text-svv-grey mb-3 pl-1">Registrer ny fartsdemper</h1>
 
 				<p className="mb-3 md:w-1/2 px-1">
