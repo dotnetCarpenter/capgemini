@@ -6,17 +6,17 @@ const map = f => list => list.map (f)
 
 const forEach = f => list => Array.prototype.forEach.call (list, f)
 
-const animateCSS = (element, animation, prefix = 'animate-') => (
+const animateCSS = (element, animation) => (
   // We create a Promise and return it
   new Promise ((resolve, reject) => {
-    const animationName = `${prefix}${animation}`
+    const animationName = animation
 
-    element.classList.add (`${prefix}animated`, animationName)
+    element.classList.add (`animate-animated`, animationName)
 
     // When the animation ends, we clean the classes and resolve the Promise
     const handleAnimationEnd = event => {
       event.stopPropagation ()
-      element.classList.remove (`${prefix}animated`, animationName)
+      element.classList.remove (`animate-animated`, animationName)
       resolve ()
     }
 

@@ -131,7 +131,7 @@
             <div class="flex gap-4">
               <label class="block w-1/2">
                 <span class="text-gray-700">Breddegrad</span>
-                <input type="number" required aria-required="true" class="
+                <input type="number" pattern="\d+(\.|,)?\d+?" step="0.000001" required aria-required="true" class="
                   mt-1
                   block
                   w-full
@@ -140,12 +140,12 @@
                   focus:border-gray-500
                   focus:bg-white
                   focus:ring-0
-                " />
+                " placeholder="63.435948" />
               </label>
 
               <label class="block w-1/2">
                 <span class="text-gray-700">Lengegrad</span>
-                <input type="number" required aria-required="true" class="
+                <input type="number" pattern="\d+(\.|,)?\d+?" step="0.000001" required aria-required="true" class="
                   mt-1
                   block
                   w-full
@@ -154,7 +154,7 @@
                   focus:border-gray-500
                   focus:bg-white
                   focus:ring-0
-                " />
+                " placeholder="10.456106" />
               </label>
             </div>
 
@@ -173,9 +173,9 @@
       <h1 class="text-3xl font-bold text-svv-red mb-3 pl-1">404: Page Not Found</h1>
     </section>
 
-    <section class="notification hidden animate-backInDown z-40 absolute p-6 max-w-sm bg-white rounded-xl shadow-lg border">
+    <section class="notification hidden z-40 absolute p-6 max-w-sm bg-white rounded-xl shadow-lg border">
       <h1 class="text-xl font-bold text-svv-grey mb-3 pl-1">Notifikasjon</h1>
-      <p class="notification__message mb-3 md:w-1/2 px-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      <p class="notification__message mb-3 px-1"></p>
     </section>
 
     <script id="headerTmpl" type="text/x-dot-template">

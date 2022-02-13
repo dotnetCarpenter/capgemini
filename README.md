@@ -27,6 +27,7 @@ Time spent:
 + 14:45-15:45: Design header according to wireframe
 + 17:00-19:30: Design footer according to wireframe
 + 20:00-22:10: Design registration page according to wireframe
++ 22:20-22:30: Small fixed for registration
 </details>
 
 ## Endpoint API

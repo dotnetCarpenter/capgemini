@@ -33,13 +33,14 @@ const setDefault = forEach (element => {
 
 const showNotification = message => {
   notificationElement.querySelector ('.notification__message').textContent = String (message)
+  notificationElement.classList.add ('animate-backInDown')
   notificationElement.classList.remove ('hidden')
 }
 
 const hideNotification = async () => {
   if (notificationElement.classList.contains ('hidden')) return
 
-  await animateCSS (notificationElement, 'backOutDown')
+  await animateCSS (notificationElement, 'animate-backOutDown')
 
   notificationElement.classList.add ('hidden')
   notificationElement.querySelector ('.notification__message').textContent  = ''
@@ -67,7 +68,7 @@ const validation = event => {
 
     console.log (dateString)
 
-    showNotification (`Du registrert ${nameElement.value} den ${dateString}`)
+    showNotification (`Du registrerte ${nameElement.value} den ${dateString}`)
   }
 
   setTimeout (cleanupForm, 3000)
