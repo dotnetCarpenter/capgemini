@@ -51,3 +51,9 @@ html {
 .button {
   @apply block bg-slate-600 text-zinc-50 leading-8 px-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer border md:border-b-2 border-slate-600 border-solid hover:border-b-yellow-400 active:border-b-yellow-400 transition;
 }
+
+.notification {
+  top: 50vh;
+  right: 50%;
+  transform: translate(50%,-50%);
+}

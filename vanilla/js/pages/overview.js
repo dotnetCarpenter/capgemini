@@ -6,20 +6,19 @@ import {
   createDate
 } from '../dates.js'
 
-const compose = f => g => x => f (g (x))
-const pipe = (...fs) => x => fs.reduce ((x, f) => f (x), x)
-const map = f => list => list.map (f)
+import {
+  map,
+  pipe
+} from '../utils.js'
 
 const formatDate = safeFormatDate (formatNorwegianDate)
 const formatDateTime = safeFormatDate (formatNorwegianDateWithTime)
 
-const tmpl = document.getElementById ('rowTmpl').textContent
-const renderFunction = doT.template (tmpl)
+const rowTmpl = document.getElementById ('rowTmpl').textContent
+const renderFunction = doT.template (rowTmpl)
 const rowInsertionPoint = document.getElementById ('rows')
 
 const endpoint = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
-
-const mountElement = document.getElementById ('page-overview')
 
 const main = () => {
   fetch (endpoint, {headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
@@ -80,4 +79,8 @@ function renderError (error) {
   rowInsertionPoint.innerHTML = doT.template (errorTmpl) (error)
 }
 
-export default { main, mountElement }
+export default {
+  main,
+  onUnmounted () {},
+  mountElement: document.getElementById ('page-overview')
+}

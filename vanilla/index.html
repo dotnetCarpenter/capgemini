@@ -66,87 +66,99 @@
       <article>
         <h1 class="text-3xl font-bold text-svv-grey mb-3 pl-1">Registrer ny fartsdemper</h1>
 
-        <p class="max-w-x-screen mb-3 md:w-1/2 px-1">
+        <p class="mb-3 md:w-1/2 px-1">
           Her kan du registrere din nye fartsdemper med å legge til metadata og lokasjon.
         </p>
 
-        <form class="mt-8 max-w-md pl-1" action="#">
+        <form id="registration" class="max-w-md mt-8 mx-auto px-1" action="#">
           <div class="grid grid-cols-1 gap-6">
             <label class="block">
               <span class="text-gray-700">Navn</span>
-              <input type="text" class="
-                        mt-1
-                        block
-                        w-full
-                        bg-gray-100
-                        border-transparent
-                        focus:border-gray-500 focus:bg-white focus:ring-0
-                      " placeholder="" />
+              <input type="text" minlength="3" required aria-required="true" min name="name" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " placeholder="F.eks. Fartsdemper" />
             </label>
 
             <label class="block">
               <span class="text-gray-700">Type</span>
-              <input type="text" class="
-                        mt-1
-                        block
-                        w-full
-                        bg-gray-100
-                        border-transparent
-                        focus:border-gray-500 focus:bg-white focus:ring-0
-                      " placeholder="" />
+              <input type="text" minlength="3" required aria-required="true" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " />
             </label>
 
             <label class="block">
               <span class="text-gray-700">Versjon</span>
-              <input type="number" min="1" class="
-                        mt-1
-                        block
-                        w-full
-                        bg-gray-100
-                        border-transparent
-                        focus:border-gray-500 focus:bg-white focus:ring-0
-                      " />
+              <input type="number" required aria-required="true" min="1" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " />
             </label>
 
             <label class="block">
               <span class="text-gray-700">Dato</span>
-              <input type="date" pattern="\d{2}/\d{2}/\d{4}" class="
-                        mt-1
-                        block
-                        w-full
-                        bg-gray-100
-                        border-transparent
-                        focus:border-gray-500 focus:bg-white focus:ring-0
-                      " />
+              <input name="date" type="date" required aria-required="true" pattern="\d{2}/\d{2}/\d{4}" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " />
             </label>
 
             <div class="flex gap-4">
               <label class="block w-1/2">
                 <span class="text-gray-700">Breddegrad</span>
-                <input type="number" class="
-                          mt-1
-                          block
-                          w-full
-                          bg-gray-100
-                          border-transparent
-                          focus:border-gray-500 focus:bg-white focus:ring-0
-                        " />
+                <input type="number" required aria-required="true" class="
+                  mt-1
+                  block
+                  w-full
+                  bg-gray-100
+                  border-transparent
+                  focus:border-gray-500
+                  focus:bg-white
+                  focus:ring-0
+                " />
               </label>
 
               <label class="block w-1/2">
                 <span class="text-gray-700">Lengegrad</span>
-                <input type="number" class="
-                          mt-1
-                          block
-                          w-full
-                          bg-gray-100
-                          border-transparent
-                          focus:border-gray-500 focus:bg-white focus:ring-0
-                        " />
+                <input type="number" required aria-required="true" class="
+                  mt-1
+                  block
+                  w-full
+                  bg-gray-100
+                  border-transparent
+                  focus:border-gray-500
+                  focus:bg-white
+                  focus:ring-0
+                " />
               </label>
             </div>
 
-            <input type="submit" value="Registrer" disabled class="button" />
+            <input type="submit" value="Registrer" class="button" />
 
           </div>
         </form>
@@ -161,6 +173,10 @@
       <h1 class="text-3xl font-bold text-svv-red mb-3 pl-1">404: Page Not Found</h1>
     </section>
 
+    <section class="notification hidden animate-backInDown z-40 absolute p-6 max-w-sm bg-white rounded-xl shadow-lg border">
+      <h1 class="text-xl font-bold text-svv-grey mb-3 pl-1">Notifikasjon</h1>
+      <p class="notification__message mb-3 md:w-1/2 px-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    </section>
 
     <script id="headerTmpl" type="text/x-dot-template">
       <svg class="logo h-12 md:h-24" viewBox="0 0 65.261502 46.463198" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -2,13 +2,11 @@ import '../assets/style.css'
 
 import doT      from 'dot'
 import overview from './pages/overview.js'
+import register from './pages/registration.js'
 
-const register = {
-  main () {console.debug ('page register')},
-  mountElement: document.getElementById ('page-register')
-}
 const pageNotFound = {
   main () {console.error ('404: page not found')},
+  onUnmounted () {},
   mountElement: document.getElementById ('page-not-found')
 }
 
@@ -67,7 +65,9 @@ const router = event => {
 
   if (previousPage) {
     previousPage.mountElement.classList.add  ('animate-animated', animateOutClass)
+    previousPage.onUnmounted ()
   }
+
   page.mountElement.classList.add    ('animate-animated', animateInClass)
   page.mountElement.classList.remove ('hidden-force')
 }
