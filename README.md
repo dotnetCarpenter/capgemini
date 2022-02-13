@@ -1,6 +1,6 @@
 # Capgemini
 
-1. [Vanilla js solution](./vanilla/dist/index.html)
+1. [Vanilla js solution](./docs/vanilla/index.html)
 
 Time spent:
 
@@ -28,6 +28,7 @@ Time spent:
 + 17:00-19:30: Design footer according to wireframe
 + 20:00-22:10: Design registration page according to wireframe
 + 22:20-22:30: Small fixed for registration
++ 22:49-: Put on github pages
 </details>
 
 ## Endpoint API
