@@ -1,6 +1,6 @@
 # Capgemini
 
-1. [Vanilla js solution](./docs/vanilla/index.html)
+1. [Vanilla js solution](https://dotnetcarpenter.github.io/capgemini/vanilla/)
 
 Time spent:
 
