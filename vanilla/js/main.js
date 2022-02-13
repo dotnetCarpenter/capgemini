@@ -1,4 +1,4 @@
-import '../style.css'
+import '../assets/style.css'
 
 import doT      from 'dot'
 import overview from './pages/overview.js'

@@ -5,50 +5,45 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Capgemini - Get The Future You Want</title>
-    <style>
-      .page {
-        position: absolute;
-      }
-    </style>
   </head>
   <body class="antialiased relative">
-    <section id="page-overview" class="page h-screen w-screen overflow-auto invisible pointer-events-none">
+    <section id="page-overview" class="page h-screen invisible pointer-events-none">
 
-      <header class="header bg-svv-grey flex items-end pr-2"></header>
+      <header class="header bg-svv-grey flex items-end mb-3"></header>
 
-      <article>
-        <h1 class="text-3xl font-bold text-svv-grey grow">Mine fartsdempere</h1>
+      <article class="md:p-2">
+        <h1 class="text-3xl font-bold text-svv-grey mb-3 pl-1">Mine fartsdempere</h1>
 
-        <p>
+        <p class="text mb-3 md:w-1/2 px-1">
           Mine fartsdempere er en oversikt over alle fartsdemperene som har blitt
           sendt inn. Her kan du raskt se statusen på registreringen, og se de i
           vegkart.
         </p>
 
-        <table>
-          <caption>Fartsdempere</caption>
-          <thead>
+        <table class="table-auto border-collapse w-full text-sm">
+          <caption class="text-lg font-bold text-svv-grey text-left bg-slate-300 py-2 pl-2">Fartsdempere</caption>
+          <thead class="bg-slate-100">
             <tr>
-              <th>Id</th>
-              <th>Versjon</th>
-              <th>Navn</th>
-              <th>Startdato</th>
-              <th colspan="2">Status</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Id</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Versjon</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Navn</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Startdato</th>
+              <th colspan="2" class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Status</th>
             </tr>
           </thead>
-          <tbody id="rows"></tbody>
+          <tbody id="rows" class="bg-white"></tbody>
         </table>
       </article>
 
       <script id="rowTmpl" type="text/x-dot-template">
         {{~ it :f }}
           <tr title="Sist modifisert {{=f.lastModified || 'er ikke spesifisert'}}">
-            <td>{{=f.id || '-'}}</td>
-            <td>{{=f.version || '-'}}</td>
-            <td>{{=f.name || '-'}}</td>
-            <td>{{=f.startDate || '-'}}</td>
-            <td>{{=f.status}}</td>
-            <td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.id || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.version || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.name || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.startDate || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.status}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">
               {{? f.href }}
                 <a href="{{=f.href}}" target="_blank">🗺️</a>
               {{?}}
@@ -63,7 +58,7 @@
       </script>
     </section>
 
-    <section id="page-register" class="page h-screen w-screen overflow-auto invisible pointer-events-none">
+    <section id="page-register" class="page h-screen invisible pointer-events-none">
       <header class="header bg-svv-grey flex items-end pr-2"></header>
 
       <article>
@@ -164,7 +159,7 @@
       </article>
     </section>
 
-    <section id="page-not-found" class="page h-screen w-screen overflow-auto invisible pointer-events-none">
+    <section id="page-not-found" class="page h-screen invisible pointer-events-none">
       <header class="header bg-svv-grey flex items-end pr-2"></header>
 
       <h1 class="text-3xl font-bold text-svv-red">404: Page Not Found</h1>

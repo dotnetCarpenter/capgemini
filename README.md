@@ -2,6 +2,11 @@
 
 1. [Vanilla js solution](./vanilla/dist/index.html)
 
+Time spent:
+
+<details>
+<summary>12.02.2022</summary>
+
 + 11:45-13:15: Logo, favicon, tailwind colors
 + 14:10-14-20: Learning [doT]
 + 14:20-14:50: Setup [doT] with test data
@@ -13,7 +18,13 @@
 + 19:40-20:30: Added basic router
 + 21:00-21:15: Use [doT] to add `<header>`
 + 21:15-22:30: Added page animation
+</details>
 
+<details>
+<summary>13.02.2022</summary>
+
++ 13:15-14:20: Design overview page according to wireframe + added correct fonts
+</details>
 
 ## Endpoint API
 
