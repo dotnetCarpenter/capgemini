@@ -24,6 +24,7 @@ Time spent:
 <summary>13.02.2022</summary>
 
 + 13:15-14:20: Design overview page according to wireframe + added correct fonts
++ 14:45-15:45: Design header according to wireframe
 </details>
 
 ## Endpoint API

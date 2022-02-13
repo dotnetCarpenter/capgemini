@@ -29,7 +29,7 @@ const setAnimationHandler = element => {
 
     if (isAnimatingOut (element)) {
       element.classList.remove ('animate-animated', animateOutClass)
-      element.classList.add    ('invisible', 'pointer-events-none')
+      element.classList.add    ('hidden', 'pointer-events-none')
     } else {
       element.classList.remove ('animate-animated', animateInClass, 'pointer-events-none')
     }
@@ -63,7 +63,7 @@ const router = event => {
     previousPage.mountElement.classList.add  ('animate-animated', animateOutClass)
   }
   page.mountElement.classList.add    ('animate-animated', animateInClass)
-  page.mountElement.classList.remove ('invisible')
+  page.mountElement.classList.remove ('hidden')
 }
 
 window.addEventListener("hashchange", router, false)

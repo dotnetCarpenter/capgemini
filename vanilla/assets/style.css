@@ -29,10 +29,17 @@ html {
 
 .page {
   position: absolute;
+  min-width: 100vw;
 }
+
 .header {
   min-width: min-content;
 }
+
+.logo {
+  transition: .5s height cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .text {
   max-width: 100vw;
 }
