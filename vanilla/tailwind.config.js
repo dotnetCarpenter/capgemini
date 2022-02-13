@@ -3,7 +3,6 @@ const withAnimations = require('animated-tailwindcss')
 module.exports = withAnimations ({
   content: [
     "./index.html",
-    // "./*.html",
     "./js/**/*.{html,js,mjs}",
   ],
   theme: {
