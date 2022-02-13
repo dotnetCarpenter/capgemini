@@ -28,7 +28,7 @@ Time spent:
 + 17:00-19:30: Design footer according to wireframe
 + 20:00-22:10: Design registration page according to wireframe
 + 22:20-22:30: Small fixed for registration
-+ 22:49-: Put on github pages
++ 22:45-22:55: Put on github pages
 </details>
 
 ## Endpoint API
