@@ -28,7 +28,8 @@ Time spent:
 + 17:00-19:30: Design footer according to wireframe
 + 20:00-22:10: Design registration page according to wireframe
 + 22:20-22:30: Small fixed for registration
-+ 22:45-22:55: Put on github pages
++ 22:45-23:00: Put on github pages
++ 23:30-00:50: Scaffolding React app
 </details>
 
 ## Endpoint API
@@ -84,6 +85,11 @@ See `get_data.sh` for a quick comparison of request and result.
 ## doT
 
 [doT]'s documentation is very scarce. The best examples I have found is https://github.com/olado/doT/blob/master/examples/advancedsnippet.txt.
+
+## animated-tailwindcss
+
+There seem to be a bug in the animations where they do not start at the center of the page, as expected.
+
 
 [doT]: https://github.com/olado/doT
 [API]: https://nvdbapiles-v3.atlas.vegvesen.no/dokumentasjon/
