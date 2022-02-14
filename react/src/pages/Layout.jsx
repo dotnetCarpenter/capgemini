@@ -12,10 +12,10 @@ const Layout = () => (
         <nav className="grow justify-self-stretch">
           <ol className="text-zinc-50 text-center space-x-1 md:space-x-4">
             <li className="inline-block">
-							<Link className="hover:underline" to="/overview">Oversikt</Link>
+							<Link className="hover:underline" to="/capgemini/react/overview">Oversikt</Link>
 						</li>
             <li className="inline-block">
-							<Link className="hover:underline" to="/register">Registrer</Link>
+							<Link className="hover:underline" to="/capgemini/react/register">Registrer</Link>
 						</li>
           </ol>
         </nav>

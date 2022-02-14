@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && rm -R ../docs/react && cp -r dist ../docs/ && mv ../docs/dist ../docs/react",
     "preview": "vite preview"
   },
   "dependencies": {

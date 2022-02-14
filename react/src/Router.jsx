@@ -11,8 +11,8 @@ function Router () {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Overview />} />
-          <Route path="overview" element={<Overview />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/capgemini/react/overview" element={<Overview />} />
+          <Route path="/capgemini/react/register" element={<Register />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
