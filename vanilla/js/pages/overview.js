@@ -28,12 +28,12 @@ const main = () => {
       }
       return response.json ()
     })
-    .then (pipe (tranform, sort (sortSpeedBumps), map (formatDates), renderSpeedBumps))
+    .then (pipe (transform, sort (sortSpeedBumps), map (formatDates), renderSpeedBumps))
     .catch (renderError)
 }
 
 
-function tranform (responseData) {
+function transform (responseData) {
   return responseData?.objekter?.map (item => ({
     status: 'Registrert',
     id: item.id,
