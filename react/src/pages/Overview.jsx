@@ -104,8 +104,7 @@ class Overview extends React.Component {
 			sort (sortSpeedBumps),
 			map (formatDates),
 			speedBumps => {
-				this.setStateHelper ({ speedBumps })
-				this.state.abortController = null
+				this.setStateHelper ({ speedBumps, abortController: null })
 			}
 		))
     .catch (error => {
