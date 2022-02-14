@@ -35,7 +35,7 @@ Time spent:
 <details>
 <summary>14.02.2022</summary>
 + 01:30-01:35: Fix CSS in react to work with new HTML structure
-+ 01:-: Implement registration page according to assignment
++ 01:50-02:50: Implement registration page according to assignment PART I
 </details>
 
 ## Endpoint API
