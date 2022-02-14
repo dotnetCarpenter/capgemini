@@ -39,7 +39,7 @@ Time spent:
 + 01:30-01:35: Fix CSS in react to work with new HTML structure
 + 01:50-02:50: Implement registration page according to assignment PART I
 + 03:20-06:30: Implement registration page according to assignment PART II
-+ 06:30-06:40: Put react app on github pages
++ 06:30-06:50: Put react app on github pages
 </details>
 
 ## Endpoint API

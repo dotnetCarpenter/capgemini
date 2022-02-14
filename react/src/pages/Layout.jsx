@@ -5,7 +5,7 @@ const Layout = () => (
   (
     <div className="app antialiased absolute overflow-hidden">
       <header className="app__header bg-svv-grey flex items-center flex-row mb-3 leading-8">
-				<Link to="/">
+				<Link to="/capgemini/react/">
 					<img src={logo} className="logo h-12 md:h-24" alt="logo" />
 				</Link>
 

@@ -10,7 +10,7 @@ function Router () {
 		<BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<Overview />} /> */}
+          <Route index element={<Overview />} />
           <Route path="/capgemini/react/" element={<Overview />} />
           <Route path="/capgemini/react/overview" element={<Overview />} />
           <Route path="/capgemini/react/register" element={<Register />} />
