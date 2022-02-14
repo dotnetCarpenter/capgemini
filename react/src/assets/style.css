@@ -32,11 +32,10 @@ html {
 }
 
 .app {
-  position: absolute;
   min-width: 100%;
 
   /* set footer, page and footer */
-  @apply grid min-h-full gap-y-6;
+  @apply grid gap-y-6 min-h-screen;
   grid-template-rows: auto 1fr auto;
 }
 

@@ -1,8 +1,8 @@
 function Register () {
 
 	return (
-		//  hidden-force
-		<section id="page-register" className="page h-screen pointer-events-none overflow-auto">
+		//  hidden-force h-screen pointer-events-none
+		<section id="page-register" className="page overflow-auto">
 
 			<article className="md:p-2">
 				<h1 className="text-3xl font-bold text-svv-grey mb-3 pl-1">Registrer ny fartsdemper</h1>
@@ -72,7 +72,7 @@ function Register () {
 						<div className="flex gap-4">
 							<label className="block w-1/2">
 								<span className="text-gray-700">Breddegrad</span>
-								<input type="number" pattern="\d+(\.|,)?\d+?" step="0.000001" required aria-required="true" className="
+								<input type="number" pattern="^\d+(\.|,)?\d+?$" step="0.000001" required aria-required="true" className="
 									mt-1
 									block
 									w-full
@@ -86,7 +86,7 @@ function Register () {
 
 							<label className="block w-1/2">
 								<span className="text-gray-700">Lengegrad</span>
-								<input type="number" pattern="\d+(\.|,)?\d+?" step="0.000001" required aria-required="true" className="
+								<input type="number" pattern="^\d+(\.|,)?\d+?$" step="0.000001" required aria-required="true" className="
 									mt-1
 									block
 									w-full

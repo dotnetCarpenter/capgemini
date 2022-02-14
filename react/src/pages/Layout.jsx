@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom"
 
 const Layout = () => (
   (
-    <div className="app antialiased relative overflow-hidden">
+    <div className="app antialiased absolute overflow-hidden">
       <header className="app__header bg-svv-grey flex items-center flex-row mb-3 leading-8">
 				<Link to="/">
 					<img src={logo} className="logo h-12 md:h-24" alt="logo" />
@@ -12,7 +12,7 @@ const Layout = () => (
         <nav className="grow justify-self-stretch">
           <ol className="text-zinc-50 text-center space-x-1 md:space-x-4">
             <li className="inline-block">
-							<Link className="hover:underline" to="/overview">Home</Link>
+							<Link className="hover:underline" to="/overview">Oversikt</Link>
 						</li>
             <li className="inline-block">
 							<Link className="hover:underline" to="/register">Registrer</Link>

@@ -1,8 +1,8 @@
 function Overview () {
 
 	return (
-		//  hidden-force
-		<section id="page-overview" className="page h-screenpointer-events-none overflow-auto">
+		//  hidden-force h-screenpointer-events-none
+		<section id="page-overview" className="page overflow-auto">
 
 			<article className="md:p-2">
 				<h1 className="text-3xl font-bold text-svv-grey mb-3 pl-1">Mine fartsdempere</h1>

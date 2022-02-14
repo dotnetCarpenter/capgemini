@@ -26,10 +26,16 @@ Time spent:
 + 13:15-14:20: Design overview page according to wireframe + added correct fonts
 + 14:45-15:45: Design header according to wireframe
 + 17:00-19:30: Design footer according to wireframe
-+ 20:00-22:10: Design registration page according to wireframe
++ 20:00-22:10: Design registration page according to wireframe and assignment
 + 22:20-22:30: Small fixed for registration
 + 22:45-23:00: Put on github pages
 + 23:30-00:50: Scaffolding React app
+</details>
+
+<details>
+<summary>14.02.2022</summary>
++ 01:30-01:35: Fix CSS in react to work with new HTML structure
++ 01:-: Implement registration page according to assignment
 </details>
 
 ## Endpoint API
