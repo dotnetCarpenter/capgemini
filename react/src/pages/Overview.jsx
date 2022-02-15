@@ -72,9 +72,11 @@ class Overview extends React.Component {
 
 		this.state = {
 			speedBumps: [],
-			abortController: null,
-			error: null
+			error: null,
+			isLoading: true,
 		}
+
+		this.abortController
 	}
 
 	setStateHelper (state) {
@@ -87,9 +89,9 @@ class Overview extends React.Component {
 	fetchData () {
 		const abortController = new AbortController
 
-		this.state.abortController = abortController
+		this.abortController = abortController
 
-		fetch (endpoint, {
+		return fetch (endpoint, {
 			headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'},
 			signal: abortController.signal
 		})
@@ -104,29 +106,27 @@ class Overview extends React.Component {
 			sort (sortSpeedBumps),
 			map (formatDates),
 			speedBumps => {
-				this.setStateHelper ({ speedBumps, abortController: null })
-			}
+				this.abortController = null
+				this.setStateHelper ({ speedBumps, isLoading: false })
+			},
 		))
     .catch (error => {
-			this.setStateHelper ({ error })
-			this.state.abortController.abort ()
+			this.abortController.abort ()
+			this.abortController = null
+			this.setStateHelper ({ error, isLoading: false })
 			console.error (error)
 		})
 	}
 
-	componentDidUpdate (prevProps, prevState, snapshot) {
-		console.log ('componentDidUpdate')
-
-		if (this.state.abortController === null && this.state.speedBumps.length === 0) {
-			this.fetchData ()
-		}
+	componentDidMount () {
+		console.time ('componentDidMount')
+		this.fetchData ()
+			.then (()=>{
+				console.timeEnd ('componentDidMount')
+			})
 	}
 
 	render () {
-		// FIXME: not sure why componentDidUpdate is not called automagically
-		if (this.state.speedBumps.length === 0) {
-			this.componentDidUpdate ()
-		}
 		return (
 			//  hidden-force h-screenpointer-events-none
 			<section id="page-overview" className="page overflow-auto">
@@ -153,9 +153,11 @@ class Overview extends React.Component {
 						</thead>
 						<tbody id="rows" className="bg-white">
 							{
-								this.state.error
-									? <RowError message={this.state.error} />
-									: this.state.speedBumps.map (speedBump => <Row speedBump={speedBump} key={String (speedBump.id)} />)
+								this.isLoading
+									? <RowError message='Loading...' />
+									:	this.state.error
+										? <RowError message={this.state.error} />
+										: this.state.speedBumps.map (speedBump => <Row speedBump={speedBump} key={String (speedBump.id)} />)
 							}
 						</tbody>
 					</table>
