@@ -45,10 +45,10 @@ const formatDates = speedBump => ({
 
 const Row = props => (
 	<tr title={`Sist modifisert ${props.speedBump.lastModified || 'er ikke spesifisert'}`}>
-		<td className="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.id || '-'}</td>
+		<td className="tabular-nums border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.id || '-'}</td>
 		<td className="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.version || '-'}</td>
 		<td className="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.name || '-'}</td>
-		<td className="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.startDate || '-'}</td>
+		<td className="tabular-nums border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.startDate || '-'}</td>
 		<td className="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{props.speedBump.status || '-'}</td>
 		<td className="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">
 			{props.speedBump?.href && (
