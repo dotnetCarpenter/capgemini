@@ -9,7 +9,8 @@ import {
 
 import {
   map,
-  pipe
+  pipe,
+  sort,
 } from '../utils.js'
 
 const formatDate = safeFormatDate (formatNorwegianDate)
@@ -26,8 +27,6 @@ const transform = responseData => (
     lastModified: createDate (item?.metadata?.sist_modifisert),
   }))
 )
-
-const sort = comparer => list => list.sort (comparer)
 
 const sortSpeedBumps = (x1, x2) => (
   x1.startDate < x2.startDate

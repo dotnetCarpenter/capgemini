@@ -6,9 +6,12 @@ const map = f => list => list.map (f)
 
 const forEach = f => list => Array.prototype.forEach.call (list, f)
 
+const sort = comparer => list => list.sort (comparer)
+
 export {
-	map,
-	pipe,
 	compose,
 	forEach,
+	map,
+	pipe,
+	sort,
 }
