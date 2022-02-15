@@ -206,6 +206,7 @@ class Register extends React.Component {
 								<input
 									type="date"
 									name="date"
+									max="6000-12-31"
 									onChange={this.handleChange('date')}
 									value={this.state.date}
 									required

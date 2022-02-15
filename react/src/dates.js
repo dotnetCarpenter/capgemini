@@ -1,3 +1,4 @@
+// apparently format will crash in firefox if we use the year 11111
 const formatNorwegianDateWithTime = new Intl.DateTimeFormat ('no-NO', { dateStyle: 'long', timeStyle: 'medium' }).format
 const formatNorwegianDate = new Intl.DateTimeFormat ('no-NO', { dateStyle: 'short' }).format
 
