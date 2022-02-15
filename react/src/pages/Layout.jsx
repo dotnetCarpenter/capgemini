@@ -25,7 +25,7 @@ const Layout = () => (
 
       <Outlet />
 
-			<footer className="app__footer bg-slate-100 h-48 grid grid-rows-3 pl-1">
+			<footer className="app__footer bg-slate-100 grid grid-rows-3 pl-1">
 				<section className="max-w-md row-start-3">
 					<h3 className="text text-base font-semibold tracking-wider">Drevet av ferske vegdata fra Nasjonal vegdatabank</h3>
 					<ol className="text-sm flex items-end">

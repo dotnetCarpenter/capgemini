@@ -60,7 +60,7 @@ class Register extends React.Component {
 
 			this.showNotification (`Du registrerte ${this.state.name} den ${dateString}`)
 
-			setTimeout (this.cleanUpForm, 3000)
+			setTimeout (this.cleanUpForm, 4000) // 1s for animation + 3s
 		}
 
 		// console.debug ('state', JSON.stringify(this.state))
@@ -88,7 +88,7 @@ class Register extends React.Component {
 		this.setStateHelper ({
 			notification: {
 				message: String (message),
-				className: 'animate-backInDown'
+				className: 'animate-backInDown duration-1000'
 			}
 		})
 
@@ -98,7 +98,7 @@ class Register extends React.Component {
 		this.setStateHelper ({
 			notification: {
 				message: this.state.notification.message,
-				className: 'animate-backOutDown'
+				className: 'animate-backOutDown duration-1000'
 			}
 		})
 
