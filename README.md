@@ -100,7 +100,11 @@ See `get_data.sh` for a quick comparison of request and result.
 ## animated-tailwindcss
 
 There seem to be a bug in the animations where they do not start at the center of the page, as expected.
+I suspect there is a difference in how the same animation is defined in [animated-tailwindcss] vs
+[animate.css].
 
 
 [doT]: https://github.com/olado/doT
 [API]: https://nvdbapiles-v3.atlas.vegvesen.no/dokumentasjon/
+[animated-tailwindcss]: https://github.com/ikcb/animated-tailwindcss
+[animate.css]: https://github.com/animate-css/animate.css
