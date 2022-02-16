@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
 	base: '/capgemini/react/',
 	build: {
-		outDir: '../docs/vanilla',
+		outDir: '../docs/react',
 		emptyOutDir: true
 	}
 })
