@@ -1,10 +1,10 @@
 {
   "name": "react",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && rm -R ../docs/react && cp -r dist ../docs/ && mv ../docs/dist ../docs/react",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {

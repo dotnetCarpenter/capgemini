@@ -1,4 +1,5 @@
 import '../assets/style.css'
+import logoPath from '/favicon.svg'
 
 import doT      from 'dot'
 import overview from './pages/overview.js'
@@ -15,7 +16,7 @@ const setInnerHtml = f => elements => {
 }
 
 const setHeaderAndFooter = () => {
-  setInnerHtml (doT.template (document.getElementById ('headerTmpl').textContent))
+  setInnerHtml (doT.template (document.getElementById ('headerTmpl').textContent).bind (doT, logoPath))
                (document.querySelectorAll ('.header'))
 
   setInnerHtml (doT.template (document.getElementById ('footerTmpl').textContent))
