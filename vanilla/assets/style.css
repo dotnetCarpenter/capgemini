@@ -3,28 +3,24 @@
 @tailwind utilities;
 
 @font-face {
-  font-family:LFT Etica;
+  font-family:"LFT Etica";
   font-style:normal;
   font-weight:300;
   src:url(fonts/LFTEticaLt.woff) format("woff")
 }
 
  @font-face {
-  font-family:LFT Etica;
+  font-family:"LFT Etica";
   font-style:normal;
   font-weight:400;
   src:url(fonts/LFT_Etica_Reg.woff) format("woff")
 }
 
  @font-face {
-  font-family:LFT Etica;
+  font-family:"LFT Etica";
   font-style:normal;
   font-weight:600;
   src:url(fonts/LFT_Etica_Semibold.woff) format("woff")
-}
-
-html {
-  font-family: "LFT Etica","Lucida Sans Unicode","Lucida Grande",sans-serif;
 }
 
 .hidden-force {
