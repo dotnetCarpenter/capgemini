@@ -1,5 +1,4 @@
 import '../assets/style.css'
-import logoPath from '/favicon.svg'
 
 import doT      from 'dot'
 import overview from './pages/overview.js'
@@ -16,7 +15,8 @@ const setInnerHtml = f => elements => {
 }
 
 const setHeaderAndFooter = () => {
-  setInnerHtml (doT.template (document.getElementById ('headerTmpl').textContent).bind (doT, logoPath))
+  // logo in header needs path to favicon and the path is changed by vite
+  setInnerHtml (doT.template (document.getElementById ('headerTmpl').textContent).bind (doT, import.meta.env.BASE_URL))
                (document.querySelectorAll ('.header'))
 
   setInnerHtml (doT.template (document.getElementById ('footerTmpl').textContent))
