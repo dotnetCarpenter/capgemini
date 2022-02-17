@@ -34,9 +34,9 @@ const setAnimationHandler = element => {
 
     if (isAnimatingOut (element)) {
       element.classList.remove ('animate-animated', animateOutClass)
-      element.classList.add    ('hidden-force', 'pointer-events-none')
+      element.classList.add    ('hidden-force')
     } else {
-      element.classList.remove ('animate-animated', animateInClass, 'pointer-events-none')
+      element.classList.remove ('animate-animated', animateInClass)
     }
 
   })
