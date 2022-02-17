@@ -6,13 +6,12 @@ module.exports = withAnimations ({
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
+    fontFamily: {
+      sans: '"LFT Etica", "Lucida Sans Unicode", "Lucida Grande", sans-serif',
+    },
     extend: {
       maxWidth: {
         'x-screen': '100vw'
-      },
-      strokeWidth: {
-        '1': '0.2px',
-        '2': '0.4px',
       },
       colors: {
         'svv-grey': 'hsl(201, 11%, 30%)',
