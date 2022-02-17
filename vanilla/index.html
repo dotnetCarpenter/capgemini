@@ -40,10 +40,10 @@
       <script id="rowTmpl" type="text/x-dot-template">
         {{~ it :f }}
           <tr title="Sist modifisert {{=f.lastModified || 'er ikke spesifisert'}}">
-            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.id || '-'}}</td>
+            <td class="tabular-nums border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.id || '-'}}</td>
             <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.version || '-'}}</td>
             <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.name || '-'}}</td>
-            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.startDate || '-'}}</td>
+            <td class="tabular-nums border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.startDate || '-'}}</td>
             <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.status}}</td>
             <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">
               {{? f.href }}
