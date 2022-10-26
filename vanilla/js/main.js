@@ -65,7 +65,7 @@ const router = event => {
   page.main ()
 
   if (previousPage) {
-    previousPage.mountElement.classList.add  ('animate-animated', animateOutClass)
+    previousPage.mountElement.classList.add ('animate-animated', animateOutClass)
     previousPage.onUnmounted ()
   }
 
