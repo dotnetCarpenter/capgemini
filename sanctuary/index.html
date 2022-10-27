@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capgemini - Get The Future You Want</title>
+  </head>
+  <body class="antialiased relative overflow-hidden">
+    <section id="page-overview" class="page h-screen hidden-force overflow-auto">
+
+      <header class="header bg-svv-grey flex items-center flex-row mb-3 leading-8"></header>
+
+      <article class="md:p-2">
+        <h1 class="text-3xl font-bold text-svv-grey mb-3 pl-1">Mine fartsdempere</h1>
+
+        <p class="max-w-x-screen mb-3 md:w-1/2 px-1">
+          Mine fartsdempere er en oversikt over alle fartsdemperene som har blitt
+          sendt inn. Her kan du raskt se statusen på registreringen, og se de i
+          vegkart.
+        </p>
+
+        <table class="table-auto border-collapse text-sm w-full">
+          <caption class="text-lg font-bold text-svv-grey text-left bg-slate-300 py-2 pl-2">Fartsdempere</caption>
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Id</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Versjon</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Navn</th>
+              <th class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Startdato</th>
+              <th colspan="2" class="border-b border-slate-600 font-semibold py-2 pl-2 md:pl-8 text-svv-grey text-left">Status</th>
+            </tr>
+          </thead>
+          <tbody id="rows" class="bg-white"></tbody>
+        </table>
+      </article>
+
+      <footer class="footer bg-slate-100 grid grid-rows-3"></footer>
+
+      <script id="rowTmpl" type="text/x-dot-template">
+        {{~ it :f }}
+          <tr title="Sist modifisert {{=f.lastModified || 'er ikke spesifisert'}}">
+            <td class="tabular-nums border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.id || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.version || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.name || '-'}}</td>
+            <td class="tabular-nums border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.startDate || '-'}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">{{=f.status}}</td>
+            <td class="border-b border-slate-100 py-2 pl-2 md:pl-8 text-svv-grey">
+              {{? f.href }}
+                <a href="{{=f.href}}" target="_blank">🗺️</a>
+              {{?}}
+            </td>
+          </tr>
+        {{~}}
+      </script>
+      <script id="errorTmpl" type="text/x-dot-template">
+        <tr>
+          <td colspan="6" class="text-red-800 text-xl font-bold">{{=it.message}}</td>
+        </tr>
+      </script>
+    </section>
+
+    <section id="page-register" class="page h-screen hidden-force overflow-auto">
+      <header class="header bg-svv-grey flex items-center flex-row mb-3 leading-8"></header>
+
+      <article class="md:p-2">
+        <h1 class="text-3xl font-bold text-svv-grey mb-3 pl-1">Registrer ny fartsdemper</h1>
+
+        <p class="mb-3 md:w-1/2 px-1">
+          Her kan du registrere din nye fartsdemper ved å legge til metadata og lokasjon.
+        </p>
+
+        <form id="registration" class="max-w-md mt-8 mx-auto px-1" action="#">
+          <div class="grid grid-cols-1 gap-6">
+            <label class="block">
+              <span class="text-gray-700">Navn</span>
+              <input type="text" minlength="3" required aria-required="true" min name="name" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " placeholder="F.eks. Fartsdemper" />
+            </label>
+
+            <label class="block">
+              <span class="text-gray-700">Type</span>
+              <input type="text" minlength="3" required aria-required="true" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " />
+            </label>
+
+            <label class="block">
+              <span class="text-gray-700">Versjon</span>
+              <input type="number" required aria-required="true" min="1" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " />
+            </label>
+
+            <label class="block">
+              <span class="text-gray-700">Dato</span>
+              <input name="date" type="date" required aria-required="true" pattern="\d{2}/\d{2}/\d{4}" class="
+                mt-1
+                block
+                w-full
+                bg-gray-100
+                border-transparent
+                focus:border-gray-500
+                focus:bg-white
+                focus:ring-0
+              " />
+            </label>
+
+            <div class="flex gap-4">
+              <label class="block w-1/2">
+                <span class="text-gray-700">Breddegrad</span>
+                <input type="number" pattern="^\d+(\.|,)?\d+?$" step="0.000001" required aria-required="true" class="
+                  mt-1
+                  block
+                  w-full
+                  bg-gray-100
+                  border-transparent
+                  focus:border-gray-500
+                  focus:bg-white
+                  focus:ring-0
+                " placeholder="63.435948" />
+              </label>
+
+              <label class="block w-1/2">
+                <span class="text-gray-700">Lengegrad</span>
+                <input type="number" pattern="^\d+(\.|,)?\d+?$" step="0.000001" required aria-required="true" class="
+                  mt-1
+                  block
+                  w-full
+                  bg-gray-100
+                  border-transparent
+                  focus:border-gray-500
+                  focus:bg-white
+                  focus:ring-0
+                " placeholder="10.456106" />
+              </label>
+            </div>
+
+            <input type="submit" value="Registrer" class="button" />
+
+          </div>
+        </form>
+      </article>
+
+      <footer class="footer bg-slate-100 grid grid-rows-3"></footer>
+    </section>
+
+    <section id="page-not-found" class="page h-screen hidden-force overflow-auto">
+      <header class="header bg-svv-grey flex items-center flex-row mb-3 leading-8"></header>
+
+      <h1 class="text-3xl font-bold text-svv-red mb-3 pl-1">404: Page Not Found</h1>
+    </section>
+
+    <section class="notification hidden z-40 absolute p-6 max-w-sm bg-white rounded-xl shadow-lg border">
+      <h1 class="text-xl font-bold text-svv-grey mb-3 pl-1">Notifikasjon</h1>
+      <p class="notification__message mb-3 px-1"></p>
+    </section>
+
+    <script id="headerTmpl" type="text/x-dot-template">
+      <img class="logo h-12 md:h-24" src="{{= it + 'favicon.svg'}}" alt="Logo" />
+
+      <nav class="grow justify-self-stretch">
+        <ol class="text-zinc-50 text-center space-x-1 md:space-x-4">
+          <li class="inline-block"><a class="hover:underline" href="#overview">Oversikt</a></li>
+          <li class="inline-block"><a class="hover:underline" href="#register">Registrer</a></li>
+        </ol>
+      </nav>
+
+      <button class="button mr-1 md:mr-4">Logg ut</button>
+    </script>
+
+    <script id="footerTmpl" type="text/x-dot-template">
+      <section class="max-w-md row-start-3 px-1 pb-1">
+        <h3 class="text text-base font-semibold tracking-wider">Drevet av ferske vegdata fra Nasjonal vegdatabank</h3>
+        <ol class="text-sm flex items-end">
+          <li class="flex-grow">Statens vegvesen</li>
+          <li class="flex-grow">Vegkart</li>
+          <li class="flex-grow">Kartverket</li>
+        </ol>
+      </section>
+    </script>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

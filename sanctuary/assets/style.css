@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family:"LFT Etica";
+  font-style:normal;
+  font-weight:300;
+  src:url(fonts/LFTEticaLt.woff) format("woff")
+}
+
+ @font-face {
+  font-family:"LFT Etica";
+  font-style:normal;
+  font-weight:400;
+  src:url(fonts/LFT_Etica_Reg.woff) format("woff")
+}
+
+ @font-face {
+  font-family:"LFT Etica";
+  font-style:normal;
+  font-weight:600;
+  src:url(fonts/LFT_Etica_Semibold.woff) format("woff")
+}
+
+.hidden-force {
+  display: none !important;
+}
+
+.page {
+  position: absolute;
+  min-width: 100%;
+
+  /* set footer, article and footer */
+  @apply grid min-h-full gap-y-6;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  min-width: min-content;
+}
+
+.logo {
+  transition: .5s height cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button {
+  @apply block bg-slate-600 text-zinc-50 leading-8 px-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer border md:border-b-2 border-slate-600 border-solid hover:border-b-yellow-400 active:border-b-yellow-400 transition;
+}
+
+.notification {
+  top: 50vh;
+  right: 50%;
+  transform: translate(50%,-50%);
+}
