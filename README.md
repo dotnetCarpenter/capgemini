@@ -2,46 +2,15 @@
 
 1. [Vanilla js solution](https://dotnetcarpenter.github.io/capgemini/vanilla/)
 1. [React solution](https://dotnetcarpenter.github.io/capgemini/react/)
+1. [Sanctuary solution](https://dotnetcarpenter.github.io/capgemini/sanctuary/)
 
-Time spent:
 
-<details>
-<summary>12.02.2022</summary>
+## Development
 
-+ 11:45-13:15: Logo, favicon, tailwind colors
-+ 14:10-14-20: Learning [doT]
-+ 14:20-14:50: Setup [doT] with test data
-+ 15:15-16:00: Fetch data from endpoint and tranform the data
-+ 16:15-16:45: Found and read documentation and added error handling
-+ 17:25-17:40: Documented [Endpoint API](#endpoint-api)
-+ 17:45-18:35: HTML form
-+ 19:10-19:40: Sort speed bumps by date
-+ 19:40-20:30: Added basic router
-+ 21:00-21:15: Use [doT] to add `<header>`
-+ 21:15-22:30: Added page animation
-</details>
+1. `cd [solution name]`
+2. `npm i`
+3. `npm run dev`
 
-<details>
-<summary>13.02.2022</summary>
-
-+ 13:15-14:20: Design overview page according to wireframe + added correct fonts
-+ 14:45-15:45: Design header according to wireframe
-+ 17:00-19:30: Design footer according to wireframe
-+ 20:00-22:10: Design registration page according to wireframe and assignment
-+ 22:20-22:30: Small fixed for registration
-+ 22:45-23:00: Put on github pages
-+ 23:30-00:50: Scaffolding React app
-</details>
-
-<details>
-<summary>14.02.2022</summary>
-
-+ 01:30-01:35: Fix CSS in react to work with new HTML structure
-+ 01:50-02:50: Implement registration page according to assignment PART I
-+ 03:20-06:30: Implement registration page according to assignment PART II
-+ 06:30-06:50: Put react app on github pages
-+ 07:10-08:30: Implement overview page according to assignment
-</details>
 
 ## Endpoint API
 
