@@ -1,5 +1,5 @@
 import doT from 'dot'
-import { S, F } from '../sanctuary.js'
+import { S, F, $ } from '../sanctuary.js'
 import { get } from '../fetch.js'
 import {
   formatNorwegianDateWithTime,
@@ -8,33 +8,61 @@ import {
   createDate
 } from '../dates.js'
 
-const formatDate = safeFormatDate (formatNorwegianDate)
-const formatDateTime = safeFormatDate (formatNorwegianDateWithTime)
-
 const rowTmpl = document.getElementById ('rowTmpl').textContent
 const renderFunction = doT.template (rowTmpl)
 const rowInsertionPoint = document.getElementById ('rows')
 
+const print = x => (console.debug (S.show (x)), x)
+
+//    formatDate :: Maybe Date -> String
+const formatDate = safeFormatDate (formatNorwegianDate)
+
+//    formatDateTime :: Maybe Date -> String
+const formatDateTime = safeFormatDate (formatNorwegianDateWithTime)
+
+//    createSpeedBump :: StrMap -> StrMap
+const createSpeedBump = data => ({
+  status: 'Registrert',
+  id: data.id,
+  href: data?.href,
+  name: data?.metadata?.type?.navn,
+  version: data?.metadata?.versjon,
+  startDate: createDate (data?.metadata?.startdato),
+  lastModified: createDate (data?.metadata?.sist_modifisert),
+})
+
+//    transform :: Json -> Maybe (Array SpeedBump)
+const transform = S.pipe ([
+  S.get (S.is ($.Array ($.Unknown))) ('objekter'),
+  S.map (S.map (createSpeedBump))
+])
+
+//    transformDataForTemplate :: Json -> Maybe (Array SpeedBump)
+const transformDataForTemplate = S.pipe ([
+  transform,
+  S.map (S.sortBy (S.prop('startDate'))),
+  S.map (S.map (formatDates)),
+])
+
+//    renderSpeedBumps :: Maybe (Array SpeedBump) -> Undefined
+const renderSpeedBumps = S.ifElse (S.isJust)
+                                  (S.pipe ([
+                                    S.map (renderFunction),
+                                    S.maybeToNullable,
+                                    html => {
+                                      rowInsertionPoint.innerHTML = html
+                                    }
+                                  ]))
+                                  (() => renderError (new Error ('Fant ingen fartsdempere')))
+
+//    resource :: String
 const resource = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
 
 const main = () => {
   get ({resource, headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
-  .pipe (S.map (S.pipe ([transform, S.sortBy (S.prop ('id')), S.map (formatDates)])))
+  .pipe (S.map (transformDataForTemplate))
   .pipe (F.fork (renderError)
                 (renderSpeedBumps))
-}
-
-
-function transform (responseData) {
-  return responseData?.objekter?.map (item => ({
-    status: 'Registrert',
-    id: item.id,
-    href: item?.href,
-    name: item?.metadata?.type?.navn,
-    version: item?.metadata?.versjon,
-    startDate: createDate (item?.metadata?.startdato),
-    lastModified: createDate (item?.metadata?.sist_modifisert),
-  }))
 }
 
 function formatDates (speedBump) {
@@ -42,14 +70,6 @@ function formatDates (speedBump) {
     ...speedBump,
     startDate: formatDate (speedBump.startDate),
     lastModified: formatDateTime (speedBump.lastModified),
-  }
-}
-
-function renderSpeedBumps (speedBumps) {
-  if (speedBumps) {
-    rowInsertionPoint.innerHTML = renderFunction (speedBumps)
-  } else {
-    renderError (new Error ('Fant ingen fartsdempere'))
   }
 }
 

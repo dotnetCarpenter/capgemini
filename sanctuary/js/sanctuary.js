@@ -26,4 +26,4 @@ const S = sanctuary.create ({
   ])
 })
 
-export { S, F }
+export { S, F, $ }

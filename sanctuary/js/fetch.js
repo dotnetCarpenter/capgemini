@@ -5,7 +5,7 @@ const get = config => (
   F.attemptP (() => fetch (config.resource, config))
   .pipe (S.chain (S.ifElse (response => response.ok)
                            (F.encaseP (response => response.json ()))
-                           (F.reject)))
+                           (response => F.reject (`${response.status}: ${response.statusText}`))))
 )
 
 export { get }
@@ -15,7 +15,7 @@ if (import.meta.vitest) {
   const { it, expect } = import.meta.vitest
 
   it ('Gets data from an end-point', async () => {
-    expect.assertions(1)
+    expect.assertions (1)
 
     const resource = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
 
