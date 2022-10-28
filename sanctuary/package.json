@@ -9,6 +9,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@vitest/coverage-c8": "^0.24.3",
     "animated-tailwindcss": "^3.3.0",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
