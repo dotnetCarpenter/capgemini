@@ -24,7 +24,7 @@ const main = () => {
       }
       return response.json ()
     })
-    .then (S.pipe ([transform, S.sortBy (S.prop ('startDate')), S.map (formatDates), renderSpeedBumps]))
+    .then (S.pipe ([transform, S.sortBy (S.prop ('id')), S.map (formatDates), renderSpeedBumps]))
     .catch (renderError)
 }
 
