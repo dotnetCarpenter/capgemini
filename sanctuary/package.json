@@ -12,19 +12,21 @@
     "animated-tailwindcss": "^3.3.0",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
-    "sanctuary": "sanctuary-js/sanctuary#72bc20ad02c5944b661efdcdd14ab60ceb92c7b3",
-    "sanctuary-def": "sanctuary-js/sanctuary-def#deadb523c488e8e7bbc988a662c62435be38a380",
-    "sanctuary-either": "sanctuary-js/sanctuary-either#18f6238f1d1e8e36d3dcdb44732255b3349eef46",
-    "sanctuary-maybe": "sanctuary-js/sanctuary-maybe#2d14d53f939c0a81e081d93dc4bda5622ca517a1",
-    "sanctuary-pair": "sanctuary-js/sanctuary-pair#829187679afceec52e889f884bdc6e9b0c0d0a18",
-    "sanctuary-show": "sanctuary-js/sanctuary-show#a00417cfe3275ac12ce83c80b29d8b5181db6dfc",
-    "sanctuary-type-classes": "sanctuary-js/sanctuary-type-classes#30d0a3258b8f03caf7d1e650d1cb7a3b1c6c9040",
+    "sanctuary": "github:sanctuary-js/sanctuary#72bc20ad02c5944b661efdcdd14ab60ceb92c7b3",
+    "sanctuary-def": "github:sanctuary-js/sanctuary-def#deadb523c488e8e7bbc988a662c62435be38a380",
+    "sanctuary-either": "github:sanctuary-js/sanctuary-either#18f6238f1d1e8e36d3dcdb44732255b3349eef46",
+    "sanctuary-maybe": "github:sanctuary-js/sanctuary-maybe#2d14d53f939c0a81e081d93dc4bda5622ca517a1",
+    "sanctuary-pair": "github:sanctuary-js/sanctuary-pair#829187679afceec52e889f884bdc6e9b0c0d0a18",
+    "sanctuary-show": "github:sanctuary-js/sanctuary-show#a00417cfe3275ac12ce83c80b29d8b5181db6dfc",
+    "sanctuary-type-classes": "github:sanctuary-js/sanctuary-type-classes#30d0a3258b8f03caf7d1e650d1cb7a3b1c6c9040",
     "tailwindcss": "^3.2.1",
     "vite": "^3.2.0",
     "vitest": "^0.24.3"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "dot": "^1.1.3"
+    "dot": "^1.1.3",
+    "fluture": "^14.0.0",
+    "fluture-sanctuary-types": "^7.1.0"
   }
 }

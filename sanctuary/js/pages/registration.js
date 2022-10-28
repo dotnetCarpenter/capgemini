@@ -1,3 +1,4 @@
+import { S } from '../sanctuary.js'
 import {
   formatNorwegianDate,
   safeFormatDate,
@@ -62,11 +63,14 @@ const validation = event => {
   // very strange requirement... let's log the date as dd/mm/åååå
   // and show a nofitication
   const date = createDate (dateElement.value)
-  if (date) {
-    const dateString = safeFormatDate (s => s.replaceAll ('.', '/'))
-                                      (formatDate (date))
+  if (S.isJust (date)) {
+    console.debug (S.show (date))
 
-    console.log (dateString)
+    const dateString = S.compose (s => s.replaceAll ('.', '/'))
+                                 (formatDate)
+                                 (date)
+
+    console.debug (S.show (dateString))
 
     showNotification (`Du registrerte ${nameElement.value} den ${dateString}`)
   }

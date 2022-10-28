@@ -1,4 +1,4 @@
-import S from 'sanctuary'
+import { S } from './sanctuary.js'
 
 const formatNorwegianDateWithTime = new Intl.DateTimeFormat ('no-NO', { dateStyle: 'long', timeStyle: 'medium' }).format
 const formatNorwegianDate = new Intl.DateTimeFormat ('no-NO', { dateStyle: 'short' }).format

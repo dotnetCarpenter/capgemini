@@ -1,5 +1,6 @@
-import S from 'sanctuary'
 import doT from 'dot'
+import { S, F } from '../sanctuary.js'
+import { get } from '../fetch.js'
 import {
   formatNorwegianDateWithTime,
   formatNorwegianDate,
@@ -14,18 +15,13 @@ const rowTmpl = document.getElementById ('rowTmpl').textContent
 const renderFunction = doT.template (rowTmpl)
 const rowInsertionPoint = document.getElementById ('rows')
 
-const endpoint = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
+const resource = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
 
 const main = () => {
-  fetch (endpoint, {headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
-    .then (response => {
-      if (!response.ok) {
-        throw new Error (`HTTP error! status: ${response.status}`)
-      }
-      return response.json ()
-    })
-    .then (S.pipe ([transform, S.sortBy (S.prop ('id')), S.map (formatDates), renderSpeedBumps]))
-    .catch (renderError)
+  get ({resource, headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
+  .pipe (S.map (S.pipe ([transform, S.sortBy (S.prop ('id')), S.map (formatDates)])))
+  .pipe (F.fork (renderError)
+                (renderSpeedBumps))
 }
 
 
