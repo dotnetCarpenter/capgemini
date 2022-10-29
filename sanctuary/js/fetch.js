@@ -1,11 +1,11 @@
 import { S, F } from './sanctuary.js'
 
-//    get :: StrMap -> Future a b
+//    get :: StrMap -> Future Object Error
 const get = config => (
   F.attemptP (() => fetch (config.resource, config))
   .pipe (S.chain (S.ifElse (response => response.ok)
                            (F.encaseP (response => response.json ()))
-                           (response => F.reject (`${response.status}: ${response.statusText}`))))
+                           (response => F.reject (new Error (`${response.status}: ${response.statusText}`)))))
 )
 
 export { get }

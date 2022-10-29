@@ -12,8 +12,6 @@ const rowTmpl = document.getElementById ('rowTmpl').textContent
 const renderFunction = doT.template (rowTmpl)
 const rowInsertionPoint = document.getElementById ('rows')
 
-const print = x => (console.debug (S.show (x)), x)
-
 //    formatDate :: Maybe Date -> String
 const formatDate = safeFormatDate (formatNorwegianDate)
 
@@ -31,46 +29,43 @@ const createSpeedBump = data => ({
   lastModified: createDate (data?.metadata?.sist_modifisert),
 })
 
-//    transform :: Json -> Maybe (Array SpeedBump)
+//    transform :: Object -> Maybe (Array SpeedBump)
 const transform = S.pipe ([
   S.get (S.is ($.Array ($.Unknown))) ('objekter'),
   S.map (S.map (createSpeedBump))
 ])
 
-//    transformDataForTemplate :: Json -> Maybe (Array SpeedBump)
-const transformDataForTemplate = S.pipe ([
+//    formatDates :: SpeedBump -> StrMap<SpeedBump>
+const formatDates = speedBump => ({
+  ...speedBump,
+  startDate: formatDate (speedBump.startDate),
+  lastModified: formatDateTime (speedBump.lastModified),
+})
+
+//    transformDataToHtmlOrError :: Object -> Either Error Html
+const transformDataToHtmlOrError = S.pipe ([
   transform,
   S.map (S.sortBy (S.prop('startDate'))),
   S.map (S.map (formatDates)),
+  S.map (renderFunction),
+  S.maybe (S.Left (new Error ('Fant ingen fartsdempere')))
+          (S.Right)
 ])
 
-//    renderSpeedBumps :: Maybe (Array SpeedBump) -> Undefined
-const renderSpeedBumps = S.ifElse (S.isJust)
-                                  (S.pipe ([
-                                    S.map (renderFunction),
-                                    S.maybeToNullable,
-                                    html => {
-                                      rowInsertionPoint.innerHTML = html
-                                    }
-                                  ]))
-                                  (() => renderError (new Error ('Fant ingen fartsdempere')))
+//    renderSpeedBumps :: Either Error Html -> Undefined
+const renderSpeedBumps = S.either (renderError)
+                                  (html => {
+                                    rowInsertionPoint.innerHTML = html
+                                  })
 
 //    resource :: String
 const resource = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartutsnitt=270153.519,7040213.023,270332.114,7040444.864&kommune=5001&segmentering=true&inkluder=metadata'
 
 const main = () => {
   get ({resource, headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
-  .pipe (S.map (transformDataForTemplate))
+  .pipe (S.map (transformDataToHtmlOrError))
   .pipe (F.fork (renderError)
                 (renderSpeedBumps))
-}
-
-function formatDates (speedBump) {
-  return {
-    ...speedBump,
-    startDate: formatDate (speedBump.startDate),
-    lastModified: formatDateTime (speedBump.lastModified),
-  }
 }
 
 function renderError (error) {

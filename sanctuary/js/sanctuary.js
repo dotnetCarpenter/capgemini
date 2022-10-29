@@ -26,4 +26,8 @@ const S = sanctuary.create ({
   ])
 })
 
-export { S, F, $ }
+// This is only meant for debugging
+// print :: a -> a
+const print = x => (console.debug (S.show (x)), x)
+
+export { S, F, $, print }
