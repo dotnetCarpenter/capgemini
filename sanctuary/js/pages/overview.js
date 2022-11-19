@@ -51,14 +51,14 @@ const formatDates = speedBump => ({
   lastModified: formatDateTime (speedBump.lastModified),
 })
 
-//    transformDataToHtmlOrError :: Object -> Either Error Html
-const transformDataToHtmlOrError = S.pipe ([
+//    transformDataToHtmlOrReject :: Object -> Future Error Html
+const transformDataToHtmlOrReject = S.pipe ([
   transform,
   S.map (S.sortBy (S.prop ('startDate'))),
   S.map (S.map (formatDates)),
   S.map (renderFunction),
-  S.maybe (S.Left (new Error ('Fant ingen fartsdempere')))
-          (S.Right)
+  S.maybe (F.reject (new Error ('Fant ingen fartsdempere')))
+          (F.resolve),
 ])
 
 //    resource :: String
@@ -68,7 +68,7 @@ const resource = 'https://nvdbapiles-v3.atlas.vegvesen.no/vegobjekter/103?kartut
 const main = () => {
   if (S.isJust (rowInsertionPoint)) {
     get ({resource, headers: {'Accept': 'application/vnd.vegvesen.nvdb-v3-rev1+json'}})
-    .pipe (S.map (transformDataToHtmlOrError))
+    .pipe (S.chain (transformDataToHtmlOrReject))
     .pipe (F.fork (renderError)
                   (renderSpeedBumps))
   } else {
@@ -79,19 +79,20 @@ const main = () => {
 
 /************ IMPURE CODE *************/
 
-function renderSpeedBumps (eitherErrorOrHtml) {
-  S.either (console.error)
-           (html => S.map (element => element.innerHTML = html)
-                          (rowInsertionPoint))
-           (eitherErrorOrHtml)
+function renderSpeedBumps (html) {
+  S.map (element => element.innerHTML = html)
+        (rowInsertionPoint)
 }
 
 //       renderError :: Error -> Undefined
 function renderError (error) {
+  console.error (error)
+
   const errorTmpl = document.getElementById ('errorTmpl').textContent
 
-  rowInsertionPoint.innerHTML = doT.template (errorTmpl)
-                                             (error)
+  S.map (element => element.innerHTML = doT.template (errorTmpl)
+                                                     (error))
+        (rowInsertionPoint)
 }
 
 export default {
