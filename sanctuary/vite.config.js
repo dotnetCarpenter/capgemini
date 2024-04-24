@@ -8,6 +8,9 @@ export default defineConfig ({
 	},
 	test: {
 		includeSource: ['js/**/*.js'],
+		coverage: {
+			exclude: ['*.config.js']
+		},
 	},
 	define: {
 		'import.meta.vitest': 'undefined',
