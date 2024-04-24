@@ -1,8 +1,7 @@
 const forEach = f => list => Array.prototype.forEach.call (list, f)
 
 const animateCSS = (element, animation) => (
-  // We create a Promise and return it
-  new Promise ((resolve, reject) => {
+  new Promise ((resolve, _) => {
     const animationName = animation
 
     element.classList.add (`animate-animated`, animationName)

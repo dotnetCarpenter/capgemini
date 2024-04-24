@@ -26,6 +26,7 @@ const S = sanctuary.create ({
   ])
 })
 
+/* v8 ignore next 3 */
 // This is only meant for debugging
 // print :: a -> a
 const print = x => (console.debug (S.show (x)), x)
