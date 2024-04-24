@@ -8,5 +8,8 @@ export default defineConfig ({
 	},
 	test: {
 		includeSource: ['js/**/*.js'],
-	}
+	},
+	define: {
+		'import.meta.vitest': 'undefined',
+	},
 })

@@ -1,6 +1,6 @@
-const withAnimations = require('animated-tailwindcss')
+import { withAnimations } from 'animated-tailwindcss'
 
-module.exports = withAnimations ({
+export default withAnimations ({
   content: [
     './index.html',
     './js/**/*.{html,js,mjs}',

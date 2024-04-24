@@ -1,18 +1,19 @@
 {
   "name": "sanctuary",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:cov": "npm run test -- --coverage"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.25.2",
-    "animated-tailwindcss": "^3.3.0",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.18",
+    "animated-tailwindcss": "^4.0.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
     "sanctuary": "github:sanctuary-js/sanctuary#72bc20ad02c5944b661efdcdd14ab60ceb92c7b3",
     "sanctuary-def": "github:sanctuary-js/sanctuary-def#deadb523c488e8e7bbc988a662c62435be38a380",
     "sanctuary-either": "github:sanctuary-js/sanctuary-either#18f6238f1d1e8e36d3dcdb44732255b3349eef46",
@@ -20,9 +21,10 @@
     "sanctuary-pair": "github:sanctuary-js/sanctuary-pair#829187679afceec52e889f884bdc6e9b0c0d0a18",
     "sanctuary-show": "github:sanctuary-js/sanctuary-show#a00417cfe3275ac12ce83c80b29d8b5181db6dfc",
     "sanctuary-type-classes": "github:sanctuary-js/sanctuary-type-classes#30d0a3258b8f03caf7d1e650d1cb7a3b1c6c9040",
-    "tailwindcss": "^3.2.1",
-    "vite": "^3.2.4",
-    "vitest": "^0.25.2"
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.10",
+    "vitest": "^1.5.1",
+    "@vitest/coverage-v8": "^1.5.1"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
